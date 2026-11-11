@@ -12,5 +12,6 @@ export const employeeRouter: ReturnType<typeof Router> = Router();
 employeeRouter.get("/", listEmployeesHandler);
 employeeRouter.get("/:id", getEmployeeHandler);
 employeeRouter.post("/", createEmployeeHandler);
+employeeRouter.put("/:id", updateEmployeeHandler);
 employeeRouter.patch("/:id", updateEmployeeHandler);
 employeeRouter.delete("/:id", deleteEmployeeHandler);
