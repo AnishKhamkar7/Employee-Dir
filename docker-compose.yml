@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: employee-dir-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: employee
+      POSTGRES_PASSWORD: employee_dev_password
+      POSTGRES_DB: employee_dir
+    ports:
+      - "5435:5432"
+    volumes:
+      - employee-dir-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U employee -d employee_dir"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  employee-dir-postgres-data:
